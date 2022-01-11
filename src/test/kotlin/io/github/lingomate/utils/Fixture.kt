@@ -6,6 +6,6 @@ import io.github.wickedev.graphql.types.ID
 
 val fixture = kotlinFixture {
     javaFakerStrategy {
-        factory<ID> { ID("") }
+        factory<ID> { ID.Empty }
     }
 }
