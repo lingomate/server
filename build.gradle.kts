@@ -94,7 +94,5 @@ tasks.withType<BootRun> {
 
 tasks.withType<Test> {
     systemProperty("spring.profiles.active", "test")
-    useJUnitPlatform {
-        includeEngines = setOf("spek2")
-    }
+    useJUnitPlatform()
 }
