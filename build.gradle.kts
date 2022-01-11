@@ -57,12 +57,25 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:1.16.2")
     testImplementation("org.testcontainers:r2dbc:1.16.2")
     testRuntimeOnly("org.postgresql:postgresql:42.3.1")
+
+    /* testing fixture */
+    testImplementation("com.appmattus.fixture:fixture:1.2.0")
+    testImplementation("com.appmattus.fixture:fixture-generex:1.2.0")
+    testImplementation("com.appmattus.fixture:fixture-javafaker:1.2.0")
+
+    /* testing spring */
+    testImplementation("io.projectreactor:reactor-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+        exclude(module = "mockito-core")
+    }
 }
 
 graphql {
     schema {
         packages = listOf(
-            "io.github.lingomate"
+            "io.github.lingomate",
+            "io.github.wickedev.graphql"
         )
     }
 }

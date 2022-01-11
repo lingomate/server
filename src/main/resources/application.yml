@@ -1,5 +1,21 @@
 graphql:
   packages:
     - io.github.lingomate
+    - io.github.wickedev.graphql
   altair:
     enabled: true
+
+spring:
+  r2dbc:
+    url: r2dbc:postgres://127.0.0.1:25432/lingomate
+    username: lingomate
+    password: lingomate
+  sql:
+    init:
+      enabled: true
+      mode: always
+      schemaLocations: classpath:/db/schema.sql
+
+r2dbc:
+  migrate:
+    resourcesPath: classpath:/db/migration/*.sql
