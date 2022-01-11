@@ -1,0 +1,5 @@
+graphql:
+  packages:
+    - io.github.lingomate
+  altair:
+    enabled: true
