@@ -2,6 +2,7 @@ graphql:
   packages:
     - io.github.lingomate
     - io.github.wickedev.graphql
+    - io.github.wickedev.spring.reactive.security.jwt
   altair:
     enabled: true
 
@@ -15,7 +16,19 @@ spring:
       enabled: true
       mode: always
       schemaLocations: classpath:/db/schema.sql
+  main:
+    allow-bean-definition-overriding: true
+
+security:
+  jwt:
+    algorithm: EC
+    issuer: https://graphql-jetpack.github.io
+    private-key: classpath:keys/ec256-private.pem
+    public-key: classpath:keys/ec256-public.pem
+    access-token-expires-in: 1h
+    refresh-token-expires-in: 60d
 
 r2dbc:
   migrate:
     resourcesPath: classpath:/db/migration/*.sql
+

@@ -18,11 +18,14 @@ data class User(
     val email: String,
     val name: String?,
     val roles: List<String>,
-    val deletedAt: LocalDateTime,
+    val deletedAt: LocalDateTime? = null,
 ) : Node, SimpleUserDetails {
 
     @GraphQLIgnore
-    override fun getUsername(): String = id.encoded
+    override fun getIdentifier(): ID = id
+
+    @GraphQLIgnore
+    override fun getUsername(): String = email
 
     @GraphQLIgnore
     override fun getPassword(): String = hashSalt

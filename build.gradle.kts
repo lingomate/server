@@ -8,6 +8,7 @@ version = "0.1.0"
 val graphQLKotlinVersion = "5.3.1"
 
 plugins {
+    java
     kotlin("jvm") version "1.6.10"
     id("org.jetbrains.kotlin.plugin.spring") version "1.6.10"
     id("org.springframework.boot") version "2.6.1"
@@ -19,6 +20,7 @@ plugins {
 repositories {
     mavenCentral()
     maven("https://github.com/wickedev/graphql-jetpack/raw/deploy/maven-repo")
+    maven("https://github.com/wickedev/spring-security-jwt-webflux/raw/deploy/maven-repo")
 }
 
 dependencies {
@@ -32,21 +34,25 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-debug")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+    implementation("com.expediagroup:graphql-kotlin-spring-server:5.3.1")
+
     /* spring */
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-web")
 
     /* graphql */
-    implementation("io.github.wickedev:graphql-jetpack-starter:0.3.8")
+    implementation("io.github.wickedev:graphql-jetpack-starter:0.4.1")
     implementation("com.expediagroup:graphql-kotlin-spring-server:$graphQLKotlinVersion")
     implementation("com.expediagroup:graphql-kotlin-spring-client:$graphQLKotlinVersion")
     implementation("com.expediagroup:graphql-kotlin-hooks-provider:$graphQLKotlinVersion")
-    implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:12.0.0")
 
     /* database */
-    implementation("io.github.wickedev:spring-data-graphql-r2dbc-starter:0.3.8")
+    implementation("io.github.wickedev:spring-data-graphql-r2dbc-starter:0.4.1")
     implementation("io.r2dbc:r2dbc-postgresql")
-    implementation("name.nkonev.r2dbc-migrate:r2dbc-migrate-spring-boot-starter:1.8.0")
+    implementation("name.nkonev.r2dbc-migrate:r2dbc-migrate-spring-boot-starter:1.8.1")
+
+    /* security */
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("io.github.wickedev:spring-security-jwt-webflux-starter:0.1.5")
 
     /* testing */
     testImplementation("io.kotest:kotest-runner-junit5:5.0.3")
